@@ -4,7 +4,7 @@
 #include <QPainter>
 #include <QObject>
 #include <QRect>
-
+//coucou
 class Case
 {
 protected:
