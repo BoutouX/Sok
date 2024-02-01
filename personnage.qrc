@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/personnage">
+        <file>WallEPX.png</file>
+    </qresource>
+</RCC>

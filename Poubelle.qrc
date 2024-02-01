@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Poubelle">
+        <file>Poubelle.png</file>
+    </qresource>
+</RCC>

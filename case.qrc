@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/case">
+        <file>case.jpg</file>
+    </qresource>
+</RCC>
