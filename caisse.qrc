@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/cible">
+    <qresource prefix="/Caisse">
         <file>Poubelle.png</file>
     </qresource>
 </RCC>

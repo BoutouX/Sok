@@ -12,7 +12,6 @@ Personnage::Personnage(int x, int y)
 void Personnage::dessiner(QPainter * p) {
     p->setPen( QPen(Qt::black, 1) );
     p->drawPixmap(x,y,50,50,QPixmap(":/personnage/WallEPX.png"));
-
 }
 
 

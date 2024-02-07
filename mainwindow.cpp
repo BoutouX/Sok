@@ -6,15 +6,14 @@
 #include "cible.h"
 #include "mur.h"
 #include "personnage.h"
+#include "caisse.h"
 
 #include <QDebug>
-#include <QList>
 #include <QKeyEvent>
 
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+
+MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -25,53 +24,46 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
 
-    delete tableau[8][8];
     tableau[8][8] = new Cible(8*(taille), 8*(taille));
     tableau[8][8]->isclasse();
 
-    delete tableau[2][ligne-2];
     tableau[2][ligne-2] = new Cible(2*(taille), (ligne-2)*(taille));
     tableau[2][ligne-2]->isclasse();
 
     for (int i = 0; i < ligne; i++) {
-        delete tableau[0][i];
         tableau[0][i] = new Mur(0*(taille), i*(taille));
         tableau[0][i]->isclasse();
 
-        delete tableau[col-1][i];
         tableau[col-1][i] = new Mur((col-1)*(taille), i*(taille));
         tableau[col-1][i]->isclasse();
 
     }
     for (int j = 0; j < col; j++) {
-        delete tableau[j][0];
         tableau[j][0] = new Mur(j*(taille), 0*(taille));
         tableau[j][0]->isclasse();
 
-        delete tableau[j][ligne-1];
         tableau[j][ligne-1] = new Mur(j*(taille), (ligne-1)*(taille));
         tableau[j][ligne-1]->isclasse();
 
     }
-    delete tableau[1][ligne-2];
     tableau[1][ligne-2] = new Mur(1*(taille), (ligne-2)*(taille));
     tableau[1][ligne-2]->isclasse();
 
-    delete tableau[1][ligne-3];
     tableau[1][ligne-3] = new Mur(1*(taille), (ligne-3)*(taille));
     tableau[1][ligne-3]->isclasse();
 
-    delete tableau[2][ligne-3];
     tableau[2][ligne-3] = new Mur(2*(taille), (ligne-3)*(taille));
     tableau[2][ligne-3]->isclasse();
 
-    delete tableau[3][ligne-3];
     tableau[3][ligne-3] = new Mur(3*(taille), (ligne-3)*(taille));
     tableau[3][ligne-3]->isclasse();
 
-
     p = new Personnage(50,50);
 
+    ca[0] = new Caisse(100,100);
+    ca[1] = new Caisse(150,150);
+    ca[2] = new Caisse(400,100);
+    ca[3] = new Caisse(100,300);
 }
 
 
@@ -83,23 +75,47 @@ void MainWindow::paintEvent(QPaintEvent* e) {
     for (int i = 0; i < ligne; i++) {
         for (int j = 0; j < col; j++) {
             if(tableau[i][j]->classe==1){
-                tableau[i][j]->dessinercase(&painter,i ,j ,":/case/case.jpg");
+                tableau[i][j]->dessinercase(&painter);
             }
             else if(tableau[i][j]->classe==2){
-                tableau[i][j]->dessinercase(&painter,i ,j ,":/cible/Cible.jpg");
+                tableau[i][j]->dessinercase(&painter);
             }
             else if(tableau[i][j]->classe==3){
-                tableau[i][j]->dessinercase(&painter,i ,j ,":/mur/mur.jpg");
+                tableau[i][j]->dessinercase(&painter);
             }
         }
     }
 
     p->dessiner(&painter);
+
+    ca[0]->dessiner(&painter);
+    ca[1]->dessiner(&painter);
+    ca[2]->dessiner(&painter);
+    ca[3]->dessiner(&painter);
+
 }
 
-void MainWindow::puisjemedeplacer(const int x, const int y){
+void MainWindow::puisjemedeplacer(const int x, const int y,int dep){
+    int tableauCaisse[4][2];
+    for (int i = 0; i < 4; i++) {
+        tableauCaisse[i][1]=ca[i]->getX();
+        tableauCaisse[i][2]=ca[i]->getY();
+    }
 
-
+// if (dep==0){                                                           dep = 0 vers le haut, 1 a droite, 2 en bas, 3 a gauche
+//        if(x,y est dans tableauCaisse){
+//            if(tableau[x/50][(y-1)/50]->classe==1 ou tableau[x/50][(y-1)/50]->classe==2){
+//              ca[numero de la caisse en question]->deplacer(x,y-50);
+//              p->deplacer(x,y);
+//            }
+//        }
+//        else if (tableau[x/50][y/50]->classe==1 ou tableau[x/50][y/50]->classe==2) {
+//              p->deplacer(x,y);
+//
+//              }
+//
+//    }
+// faire de meme pour les trois auytres directions
 
     if (tableau[x/50][y/50]->classe==1) {
         p->deplacer(x,y);
@@ -114,27 +130,32 @@ void MainWindow::puisjemedeplacer(const int x, const int y){
 void MainWindow::keyPressEvent(QKeyEvent* event) {
 
     int taille = 50;
+    int dep;
 
     switch(event->key())
     {
     case Qt::Key_Left :
     {
-        puisjemedeplacer(p->getX()-taille, p->getY());
+        dep=3;
+        puisjemedeplacer(p->getX()-taille, p->getY(),dep);
         break;
     }
     case Qt::Key_Right :
     {
-        puisjemedeplacer(p->getX()+taille,p->getY());
+        dep=1;
+        puisjemedeplacer(p->getX()+taille,p->getY(),dep);
         break;
     }
     case Qt::Key_Down :
     {
-        puisjemedeplacer(p->getX(),p->getY()+taille);
+        dep=2;
+        puisjemedeplacer(p->getX(),p->getY()+taille,dep);
         break;
     }
     case Qt::Key_Up :
     {
-        puisjemedeplacer(p->getX(),p->getY()-taille);
+        dep=0;
+        puisjemedeplacer(p->getX(),p->getY()-taille,dep);
         break;
     }
     }

@@ -4,14 +4,14 @@
 
 #include<QPixmap>
 #include <QPainter>
-#include <QObject>
-#include <QRect>
+
 
 class Casevide : public Case
 {
 public:
     Casevide(int x, int y);
     void isclasse() override;
+    void dessinercase(QPainter * c);
 };
 
 #endif // CASEVIDE_H

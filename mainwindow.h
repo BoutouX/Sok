@@ -8,9 +8,12 @@
 #include <QList>
 #include <QPoint>
 #include "personnage.h"
+#include "caisse.h"
 #include "mur.h"
 #include "case.h"
 #include "cible.h"
+#include <iostream>
+#include <string>
 
 
 #include <QMainWindow>
@@ -31,6 +34,7 @@ public:
     int col = 10;
     int taille = 50 ;
 
+
     Case* tableau[10][10];
 
     MainWindow(QWidget *parent = nullptr);
@@ -39,8 +43,9 @@ public:
 private:
     Ui::MainWindow *ui;
     Personnage *p;
+    Caisse *ca[4];
     void paintEvent(QPaintEvent* e);
     void keyPressEvent(QKeyEvent* event);
-    void puisjemedeplacer(const int x, const int y);
+    void puisjemedeplacer(const int x, const int y,int dep);
 };
 #endif // MAINWINDOW_H

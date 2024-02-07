@@ -12,4 +12,7 @@ void Mur::isclasse(){
 }
 
 
-
+void  Mur::dessinercase(QPainter * c){
+    c->setPen( QPen(Qt::black, 1) );
+    c->drawPixmap(x,y,50,50,QPixmap(":/mur/Mur.jpg"));
+}

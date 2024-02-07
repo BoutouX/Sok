@@ -5,14 +5,14 @@
 
 #include<QPixmap>
 #include <QPainter>
-#include <QObject>
-#include <QRect>
+
 
 class Mur : public Case
 {
 public:
     Mur(int x, int y);
     void isclasse() override ;
+    void dessinercase(QPainter * c);
 
 
 };

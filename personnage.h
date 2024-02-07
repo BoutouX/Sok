@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QRect>
 
+
 class Personnage
 {
 

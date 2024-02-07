@@ -5,13 +5,14 @@
 
 #include<QPixmap>
 #include <QPainter>
-#include <QObject>
-#include <QRect>
+
+
 class Cible : public Case
 {
 public:
     Cible(int x, int y);
     void isclasse() override;
+    void dessinercase(QPainter * c);
 };
 
 
