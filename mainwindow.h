@@ -44,6 +44,7 @@ private:
     Ui::MainWindow *ui;
     Personnage *p;
     Caisse *ca[4];
+    int indexof(int x, int y, int tableauCaisse[4][2]);
     void paintEvent(QPaintEvent* e);
     void keyPressEvent(QKeyEvent* event);
     void puisjemedeplacer(const int x, const int y,int dep);
