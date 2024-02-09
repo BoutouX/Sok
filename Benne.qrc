@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/Benne"/>
+    <qresource prefix="/">
+        <file>GarbageBin.png</file>
+    </qresource>
+</RCC>
