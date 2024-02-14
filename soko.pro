@@ -16,7 +16,9 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     mur.cpp \
-    personnage.cpp
+    partie.cpp \
+    personnage.cpp \
+    plateau.cpp
 
 HEADERS += \
     caisse.h \
@@ -25,7 +27,9 @@ HEADERS += \
     cible.h \
     mainwindow.h \
     mur.h \
-    personnage.h
+    partie.h \
+    personnage.h \
+    plateau.h
 
 FORMS += \
     mainwindow.ui
