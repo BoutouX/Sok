@@ -11,7 +11,7 @@
 #include "case.h"
 #include "cible.h"
 #include "casevide.h"
-
+#include "partie.h"
 
 #include <iostream>
 #include <string>
@@ -26,13 +26,14 @@ public:
 
 
     Case* tableau[10][10];
+    int tableauCaisse[4][2];
 
 public:
     Plateau();
     Personnage *p;
     Caisse *ca[4];
     int indexof(int x, int y, int tableauCaisse[4][2]);
-    void puisjemedeplacer(const int x, const int y,int dep){
+    void puisjemedeplacer(const int x, const int y,int dep);
 
 
 };

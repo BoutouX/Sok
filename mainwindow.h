@@ -13,6 +13,7 @@
 #include "case.h"
 #include "cible.h"
 #include "plateau.h"
+#include "partie.h"
 
 #include <iostream>
 #include <string>
@@ -30,9 +31,8 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-protected:
-    Plateau *plateau;
-
+public:
+    Partie *partie;
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -42,6 +42,5 @@ private:
     int indexof(int x, int y, int tableauCaisse[4][2]);
     void paintEvent(QPaintEvent* e);
     void keyPressEvent(QKeyEvent* event);
-    void puisjemedeplacer(const int x, const int y,int dep);
 };
 #endif // MAINWINDOW_H

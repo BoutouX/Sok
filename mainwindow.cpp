@@ -8,6 +8,7 @@
 #include "personnage.h"
 #include "caisse.h"
 #include "plateau.h"
+#include "partie.h"
 
 #include <QDebug>
 #include <QKeyEvent>
@@ -19,8 +20,7 @@
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    plateau = new Plateau();
-
+    partie = new Partie();
 }
 
 
@@ -29,26 +29,26 @@ void MainWindow::paintEvent(QPaintEvent* e) {
     QWidget::paintEvent(e);
     QPainter painter(this);
 
-    for (int i = 0; i < plateau.ligne; i++) {
-        for (int j = 0; j < plateau.col; j++) {
-            if(plateau.tableau[i][j]->classe==1){
-                plateau.tableau[i][j]->dessinercase(&painter);
+    for (int i = 0; i < partie->plateau->ligne; i++) {
+        for (int j = 0; j < partie->plateau->col; j++) {
+            if(partie->plateau->tableau[i][j]->classe==1){
+                partie->plateau->tableau[i][j]->dessinercase(&painter);
             }
-            else if(plateau.tableau[i][j]->classe==2){
-                plateau.tableau[i][j]->dessinercase(&painter);
+            else if(partie->plateau->tableau[i][j]->classe==2){
+                partie->plateau->tableau[i][j]->dessinercase(&painter);
             }
-            else if(plateau.tableau[i][j]->classe==3){
-                plateau.tableau[i][j]->dessinercase(&painter);
+            else if(partie->plateau->tableau[i][j]->classe==3){
+                partie->plateau->tableau[i][j]->dessinercase(&painter);
             }
         }
     }
 
-    plateau.p->dessiner(&painter);
+    partie->plateau->p->dessiner(&painter);
 
-    plateau.ca[0]->dessiner(&painter);
-    plateau.ca[1]->dessiner(&painter);
-    plateau.ca[2]->dessiner(&painter);
-    plateau.ca[3]->dessiner(&painter);
+    partie->plateau->ca[0]->dessiner(&painter);
+    partie->plateau->ca[1]->dessiner(&painter);
+    partie->plateau->ca[2]->dessiner(&painter);
+    partie->plateau->ca[3]->dessiner(&painter);
 
 }
 
@@ -62,25 +62,25 @@ void MainWindow::keyPressEvent(QKeyEvent* event) {
     case Qt::Key_Left :
     {
         dep=3;
-        puisjemedeplacer(plateau.p->getX()-taille, plateau.p->getY(),dep);
+        partie->plateau->puisjemedeplacer(partie->plateau->p->getX()-taille, partie->plateau->p->getY(),dep);
         break;
     }
     case Qt::Key_Right :
     {
         dep=1;
-        puisjemedeplacer(plateau.p->getX()+taille,plateau.p->getY(),dep);
+        partie->plateau->puisjemedeplacer(partie->plateau->p->getX()+taille, partie->plateau->p->getY(),dep);
         break;
     }
     case Qt::Key_Down :
     {
         dep=2;
-        puisjemedeplacer(plateau.p->getX(),plateau.p->getY()+taille,dep);
+        partie->plateau->puisjemedeplacer(partie->plateau->p->getX(),partie->plateau->p->getY()+taille,dep);
         break;
     }
     case Qt::Key_Up :
     {
         dep=0;
-        puisjemedeplacer(plateau.p->getX(),plateau.p->getY()-taille,dep);
+        partie->plateau->puisjemedeplacer(partie->plateau->p->getX(), partie->plateau->p->getY()-taille,dep);
         break;
     }
     }

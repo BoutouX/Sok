@@ -3,7 +3,6 @@
 
 #include "plateau.h"
 
-
 #include <QDebug>
 #include <QKeyEvent>
 #include <QVector>
@@ -59,28 +58,28 @@ Plateau::Plateau() {
 
 
 int Plateau::indexof(int x, int y, int tableauCaisse[4][2]){
-    for (int i=0; i<4; i++)
+    for (int l=0; l<4; l++)
     {
-        if(tableauCaisse[i][1]==x && tableauCaisse[i][2]==y){
-            return i;
+        if(tableauCaisse[l][1]==x && tableauCaisse[l][2]==y){
+            return l;
         }
     }
     return 400; //retourne 400 si la x,y ne contient pas de caisse (pour eviter de creer une autre fonction similaire contient
 }
 void Plateau::puisjemedeplacer(const int x, const int y,int dep){
 
-    int tableauCaisse[4][2];
-    for (int i = 0; i < 4; i++) {
-        tableauCaisse[i][1]= ca[i]->getX();
-        tableauCaisse[i][2]= ca[i]->getY();
+    for (int k = 0; k < 4; k++) {
+        tableauCaisse[k][1]= ca[k]->getX();
+        tableauCaisse[k][2]= ca[k]->getY();
     }
 
     if (dep==0){                 //dep = 0 vers le haut, 1 a droite, 2 en bas, 3 a gauche
-        if(indexof(x,y,tableauCaisse)!=400)
-        {          //x,y est dans tableauCaisse
+        if(indexof(x,y,tableauCaisse)!=400){          //x,y est dans tableauCaisse
             if(tableau[x/50][(y-50)/50]->classe==1 || tableau[x/50][(y-50)/50]->classe==2){   //condition pour ne pas deplacer un caisse sur les murs
-                ca[indexof(x,y,tableauCaisse)]->deplacer(x,y-50);
-                p->deplacer(x,y);
+                if(indexof(x,y-50,tableauCaisse)==400){
+                    ca[indexof(x,y,tableauCaisse)]->deplacer(x,y-50);
+                    p->deplacer(x,y);
+                }
             }
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
@@ -90,9 +89,11 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
     // faire de meme pour les trois auytres directions
     if (dep==1){                 //dep = 0 vers le haut, 1 a droite, 2 en bas, 3 a gauche
         if(indexof(x,y,tableauCaisse)!=400){          //x,y est dans tableauCaisse
-            if(tableau[(x+50)/50][(y)/50]->classe==1 || tableau[(x+50)/50][y/50]->classe==2){
-                ca[indexof(x,y,tableauCaisse)]->deplacer(x+50,y);
-                p->deplacer(x,y);
+            if(tableau[(x+50)/50][y/50]->classe==1 || tableau[(x+50)/50][y/50]->classe==2){
+                if(indexof(x+50,y,tableauCaisse)==400){
+                    ca[indexof(x,y,tableauCaisse)]->deplacer(x+50,y);
+                    p->deplacer(x,y);
+                }
             }
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
@@ -102,20 +103,23 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
     if (dep==2){                                                //dep = 0 vers le haut, 1 a droite, 2 en bas, 3 a gauche
         if(indexof(x,y,tableauCaisse)!=400){                   //x,y est dans tableauCaisse
             if(tableau[x/50][(y+50)/50]->classe==1 || tableau[x/50][(y+50)/50]->classe==2){
-                ca[indexof(x,y,tableauCaisse)]->deplacer(x,y+50);
-                p->deplacer(x,y);
+                if(indexof(x,y+50,tableauCaisse)==400){
+                    ca[indexof(x,y,tableauCaisse)]->deplacer(x,y+50);
+                    p->deplacer(x,y);
+                }
             }
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
             p->deplacer(x,y);
         }
     }
-    // faire de meme pour les trois autres directions
     if (dep==3){                 //dep = 0 vers le haut, 1 a droite, 2 en bas, 3 a gauche
         if(indexof(x,y,tableauCaisse)!=400){          //x,y est dans tableauCaisse
             if(tableau[(x-50)/50][(y)/50]->classe==1 || tableau[(x-50)/50][y/50]->classe==2){
-                ca[indexof(x,y,tableauCaisse)-1]->deplacer(x-50,y);
-                p->deplacer(x,y);
+                if(indexof(x-50,y,tableauCaisse)==400){
+                    ca[indexof(x,y,tableauCaisse)]->deplacer(x-50,y);
+                    p->deplacer(x,y);
+                }
             }
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
