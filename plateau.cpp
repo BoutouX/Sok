@@ -82,8 +82,6 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
             p->deplacer(x, y);
-            qDebug() << "hey";
-
         }
     }
     // faire de meme pour les trois auytres directions
@@ -111,7 +109,6 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
             p->deplacer(x, y);
-
         }
     }
     if (dep==3){                 //dep = 0 vers le haut, 1 a droite, 2 en bas, 3 a gauche
@@ -125,6 +122,7 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
             p->deplacer(x, y);
+
         }
     }
 }
