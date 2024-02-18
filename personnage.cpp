@@ -19,6 +19,7 @@ void Personnage::deplacer(int x, int y)
 {
     this->x = x;
     this->y = y;
+    qDebug() << x << y;
 }
 
 int Personnage::getX() const

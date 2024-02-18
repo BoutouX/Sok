@@ -24,7 +24,6 @@ public:
     int col = 10;
     int taille = 50 ;
 
-
     Case* tableau[10][10];
     int tableauCaisse[4][2];
 
@@ -34,7 +33,6 @@ public:
     Caisse *ca[4];
     int indexof(int x, int y, int tableauCaisse[4][2]);
     void puisjemedeplacer(const int x, const int y,int dep);
-
 
 };
 

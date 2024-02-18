@@ -1,13 +1,11 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-
 #include "plateau.h"
+
 
 #include <QDebug>
 #include <QKeyEvent>
 #include <QVector>
 
-Plateau::Plateau() {
+Plateau::Plateau(){
 
     for (int i = 0; i < ligne; i++) {
         for (int j = 0; j < col; j++) {
@@ -78,12 +76,14 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
             if(tableau[x/50][(y-50)/50]->classe==1 || tableau[x/50][(y-50)/50]->classe==2){   //condition pour ne pas deplacer un caisse sur les murs
                 if(indexof(x,y-50,tableauCaisse)==400){
                     ca[indexof(x,y,tableauCaisse)]->deplacer(x,y-50);
-                    p->deplacer(x,y);
+                    p->deplacer(x, y);
                 }
             }
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
-            p->deplacer(x,y);
+            p->deplacer(x, y);
+            qDebug() << "hey";
+
         }
     }
     // faire de meme pour les trois auytres directions
@@ -92,12 +92,12 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
             if(tableau[(x+50)/50][y/50]->classe==1 || tableau[(x+50)/50][y/50]->classe==2){
                 if(indexof(x+50,y,tableauCaisse)==400){
                     ca[indexof(x,y,tableauCaisse)]->deplacer(x+50,y);
-                    p->deplacer(x,y);
+                    p->deplacer(x, y);
                 }
             }
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
-            p->deplacer(x,y);
+            p->deplacer(x, y);
         }
     }
     if (dep==2){                                                //dep = 0 vers le haut, 1 a droite, 2 en bas, 3 a gauche
@@ -105,12 +105,13 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
             if(tableau[x/50][(y+50)/50]->classe==1 || tableau[x/50][(y+50)/50]->classe==2){
                 if(indexof(x,y+50,tableauCaisse)==400){
                     ca[indexof(x,y,tableauCaisse)]->deplacer(x,y+50);
-                    p->deplacer(x,y);
+                    p->deplacer(x, y);
                 }
             }
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
-            p->deplacer(x,y);
+            p->deplacer(x, y);
+
         }
     }
     if (dep==3){                 //dep = 0 vers le haut, 1 a droite, 2 en bas, 3 a gauche
@@ -118,12 +119,12 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
             if(tableau[(x-50)/50][(y)/50]->classe==1 || tableau[(x-50)/50][y/50]->classe==2){
                 if(indexof(x-50,y,tableauCaisse)==400){
                     ca[indexof(x,y,tableauCaisse)]->deplacer(x-50,y);
-                    p->deplacer(x,y);
+                    p->deplacer(x, y);
                 }
             }
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
-            p->deplacer(x,y);
+            p->deplacer(x, y);
         }
     }
 }

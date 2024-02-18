@@ -13,11 +13,13 @@
 #include "casevide.h"
 #include "plateau.h"
 
+class Plateau;
+
 class Partie
 {
 public:
 
-    Plateau->Plateau *plateau;
+    Plateau* plateau;
     Partie();
 
     bool testersigagne();

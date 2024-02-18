@@ -1,14 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "case.h"
-#include "casevide.h"
-#include "cible.h"
-#include "mur.h"
-#include "personnage.h"
-#include "caisse.h"
-#include "plateau.h"
-#include "partie.h"
 
 #include <QDebug>
 #include <QKeyEvent>
@@ -21,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
 {
     ui->setupUi(this);
     partie = new Partie();
+
 }
 
 
