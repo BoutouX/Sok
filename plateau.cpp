@@ -56,7 +56,8 @@ Plateau::Plateau(){
 
 
 int Plateau::indexof(int x, int y, int tableauCaisse[4][2]){
-    for (int l=0; l<4; l++)
+
+    for (int l=0; l<5; l++)
     {
         if(tableauCaisse[l][1]==x && tableauCaisse[l][2]==y){
             return l;
@@ -86,9 +87,10 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
     }
     // faire de meme pour les trois auytres directions
     if (dep==1){                 //dep = 0 vers le haut, 1 a droite, 2 en bas, 3 a gauche
-        if(indexof(x,y,tableauCaisse)!=400){          //x,y est dans tableauCaisse
+        if((indexof(x,y,tableauCaisse))!=400){          //x,y est dans tableauCaisse
             if(tableau[(x+50)/50][y/50]->classe==1 || tableau[(x+50)/50][y/50]->classe==2){
                 if(indexof(x+50,y,tableauCaisse)==400){
+
                     ca[indexof(x,y,tableauCaisse)]->deplacer(x+50,y);
                     p->deplacer(x, y);
                 }

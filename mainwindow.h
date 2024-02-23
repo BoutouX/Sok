@@ -41,6 +41,6 @@ private:
 
     int indexof(int x, int y, int tableauCaisse[4][2]);
     void paintEvent(QPaintEvent* e);
-    void keyPressEvent(QKeyEvent* event);
+    void keyPressEvent(QKeyEvent* event) override;
 };
 #endif // MAINWINDOW_H
