@@ -24,25 +24,17 @@ void MainWindow::paintEvent(QPaintEvent* e) {
 
     for (int i = 0; i < partie->plateau->ligne; i++) {
         for (int j = 0; j < partie->plateau->col; j++) {
-            if(partie->plateau->tableau[i][j]->classe==1){
+
                 partie->plateau->tableau[i][j]->dessinercase(&painter);
-            }
-            else if(partie->plateau->tableau[i][j]->classe==2){
-                partie->plateau->tableau[i][j]->dessinercase(&painter);
-            }
-            else if(partie->plateau->tableau[i][j]->classe==3){
-                partie->plateau->tableau[i][j]->dessinercase(&painter);
-            }
         }
     }
 
     partie->plateau->p->dessiner(&painter);
 
-    partie->plateau->ca[0]->dessiner(&painter);
-    partie->plateau->ca[1]->dessiner(&painter);
-    partie->plateau->ca[2]->dessiner(&painter);
-    partie->plateau->ca[3]->dessiner(&painter);
 
+    for (int i=0; i< partie->nbrcaisse;i++){
+        partie->plateau->ca[i]->dessiner(&painter);
+    }
 }
 
 void MainWindow::keyPressEvent(QKeyEvent* event) {

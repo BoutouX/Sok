@@ -21,7 +21,7 @@ public:
 
     Plateau* plateau;
     Partie();
-
+    int nbrcaisse;
     bool testersigagne();
 };
 
