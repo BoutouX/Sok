@@ -7,8 +7,6 @@
 #include <QVector>
 
 
-
-
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -49,33 +47,30 @@ void MainWindow::keyPressEvent(QKeyEvent* event) {
 
     int taille = 50;
     int dep;
-
-    switch(event->key())
+    int key = event->key();
+    QMainWindow::keyPressEvent(event);
+    switch(key)
     {
-    case Qt::Key_Left :
-    {
-        dep=3;
-        partie->plateau->puisjemedeplacer(partie->plateau->p->getX()-taille, partie->plateau->p->getY(),dep);
+    case Qt::Key_Right:
+        dep = 1;
+        qDebug() << "Right key pressed";
+        partie->plateau->puisjemedeplacer((partie->plateau->p->getX()) + taille, partie->plateau->p->getY(), dep);
         break;
-    }
-    case Qt::Key_Right :
-    {
-        dep=1;
-        partie->plateau->puisjemedeplacer(partie->plateau->p->getX()+taille, partie->plateau->p->getY(),dep);
+    case Qt::Key_Left:
+        dep = 3;
+        qDebug() << "Left key pressed";
+        partie->plateau->puisjemedeplacer((partie->plateau->p->getX()) - taille, partie->plateau->p->getY(), dep);
         break;
-    }
-    case Qt::Key_Down :
-    {
-        dep=2;
-        partie->plateau->puisjemedeplacer(partie->plateau->p->getX(),partie->plateau->p->getY()+taille,dep);
+    case Qt::Key_Down:
+        dep = 2;
+        qDebug() << "Down key pressed";
+        partie->plateau->puisjemedeplacer(partie->plateau->p->getX(), (partie->plateau->p->getY()) + taille, dep);
         break;
-    }
-    case Qt::Key_Up :
-    {
-        dep=0;
-        partie->plateau->puisjemedeplacer(partie->plateau->p->getX(), partie->plateau->p->getY()-taille,dep);
+    case Qt::Key_Up:
+        dep = 0;
+        qDebug() << "Up key pressed";
+        partie->plateau->puisjemedeplacer(partie->plateau->p->getX(), (partie->plateau->p->getY()) - taille, dep);
         break;
-    }
     }
     repaint();
 }
