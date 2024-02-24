@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Bravo">
+        <file>téléchargement.jpg</file>
+    </qresource>
+</RCC>

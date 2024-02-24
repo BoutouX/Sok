@@ -5,18 +5,17 @@
 #include <QDebug>
 #include <QKeyEvent>
 #include <QVector>
-
+#include <QWidget>
+#include <QPainter>
+#include<QPixmap>
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    partie = new Partie();
-
 }
 
 
 void MainWindow::paintEvent(QPaintEvent* e) {
-
     QWidget::paintEvent(e);
     QPainter painter(this);
 
@@ -35,12 +34,15 @@ void MainWindow::paintEvent(QPaintEvent* e) {
     }
 
     partie->plateau->p->dessiner(&painter);
+    qDebug()<<"hey";
 
     partie->plateau->ca[0]->dessiner(&painter);
     partie->plateau->ca[1]->dessiner(&painter);
     partie->plateau->ca[2]->dessiner(&painter);
     partie->plateau->ca[3]->dessiner(&painter);
+    if (partie->testersigagne()){
 
+    }
 }
 
 void MainWindow::keyPressEvent(QKeyEvent* event) {
@@ -72,11 +74,15 @@ void MainWindow::keyPressEvent(QKeyEvent* event) {
         partie->plateau->puisjemedeplacer(partie->plateau->p->getX(), (partie->plateau->p->getY()) - taille, dep);
         break;
     }
+
     repaint();
+
+
 }
 
 MainWindow::~MainWindow()
 {
+    delete partie;
     delete ui;
 }
 

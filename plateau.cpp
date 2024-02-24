@@ -1,4 +1,5 @@
 #include "plateau.h"
+#include "personnage.h"
 
 
 #include <QDebug>
@@ -46,12 +47,6 @@ Plateau::Plateau(){
     tableau[3][ligne-3] = new Mur(3*(taille), (ligne-3)*(taille));
     tableau[3][ligne-3]->isclasse();
 
-    p = new Personnage(50,50);
-
-    ca[0] = new Caisse(100,100);
-    ca[1] = new Caisse(150,150);
-    ca[2] = new Caisse(400,100);
-    ca[3] = new Caisse(100,300);
 }
 
 
@@ -82,6 +77,7 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
             }
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
+
             p->deplacer(x, y);
         }
     }
@@ -97,7 +93,10 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
             }
         }
         else if (tableau[x/50][y/50]->classe==1 || tableau[x/50][y/50]->classe==2) {
+
             p->deplacer(x, y);
+
+
         }
     }
     if (dep==2){                                                //dep = 0 vers le haut, 1 a droite, 2 en bas, 3 a gauche
@@ -127,4 +126,18 @@ void Plateau::puisjemedeplacer(const int x, const int y,int dep){
 
         }
     }
+}
+Plateau::~Plateau() {
+    // Libérer la mémoire de l'objet Personnage
+    delete p;
+
+    // Libérer la mémoire de chaque objet Caisse dans le tableau de caisse
+    for (int i = 0; i < 4; ++i) {
+        delete ca[i];
+    }
+    for (int i = 0; i < ligne; i++) {
+        for (int j = 0; j < col; j++) {
+            delete tableau[i][j];
+        }
+}
 }

@@ -32,13 +32,12 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    Partie *partie;
+    Partie *partie = new Partie();;
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private:
+public:
     Ui::MainWindow *ui;
-
     int indexof(int x, int y, int tableauCaisse[4][2]);
     void paintEvent(QPaintEvent* e);
     void keyPressEvent(QKeyEvent* event) override;
