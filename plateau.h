@@ -12,6 +12,8 @@
 #include "cible.h"
 #include "casevide.h"
 #include "partie.h"
+#include "personnage.h"
+
 
 #include <iostream>
 #include <string>
@@ -35,7 +37,7 @@ public:
     Case* tableau[10][10];
     /*! tableau caisses, ce tableau représente les caisses du jeu, chaque caisse est un objet de la classe Caisse*/
     int tableauCaisse[4][2];
-
+    ~Plateau();
 public:
     /*! 
      * @brief Constructeur de la classe Plateau.

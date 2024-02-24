@@ -41,6 +41,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Benne.qrc \
+    Bravo.qrc \
     Caisse.qrc \
     Ressources/ImagesMur.qrc \
     case.qrc \

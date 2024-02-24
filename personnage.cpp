@@ -15,10 +15,11 @@ void Personnage::dessiner(QPainter * p) {
 }
 
 
-void Personnage::deplacer(int x, int y)
-{
-    this->x = x;
-    this->y = y;
+void Personnage::deplacer(int new_x, int new_y){
+
+    this->x = new_x;
+    this->y = new_y;
+
 }
 
 int Personnage::getX() const
