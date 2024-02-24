@@ -13,16 +13,13 @@
 #include "casevide.h"
 #include "plateau.h"
 
-class Plateau;
-/*La classe Partie, cette classe permet de définir les règles de jeu du sokoban, on définit les paramètres de jeu*/
+
 class Partie
 {
 public:
     /*! \brief Attribut plateau, cet attribut est de type plateau, cet objet représente le terrain de jeu*/
-    Plateau* plateau;
     
     Partie();
-
     Partie(int niveau);
     bool testersigagne();
     Plateau *plateau;

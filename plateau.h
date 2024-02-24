@@ -18,7 +18,7 @@
 #include <iostream>
 #include <string>
 /*! classe plateau, cette classe initialise le plateau du jeu, on définit les dimensions et les caisse*/
-class Plateau
+
 /**
  * @brief Classe représentant le plateau de jeu.
  * 
