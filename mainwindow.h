@@ -14,7 +14,7 @@
 #include "cible.h"
 #include "plateau.h"
 #include "partie.h"
-
+#include "message.h"
 #include <iostream>
 #include <string>
 
@@ -32,7 +32,9 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    Partie *partie = new Partie();;
+    Message *m = new Message();
+    Partie *partie = new Partie(1);
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 

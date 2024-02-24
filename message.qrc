@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/message">
+        <file>message.jpg</file>
+    </qresource>
+</RCC>

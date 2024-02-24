@@ -1,7 +1,12 @@
 #include "partie.h"
+#include<QDebug>
 
-Partie::Partie() {
-    plateau = new Plateau();
+Partie::Partie(int niveau) {
+    if (niveau==1){
+        plateau = new Plateau();
+    }
+
+
 }
 
 bool Partie::testersigagne(){
@@ -19,9 +24,13 @@ bool Partie::testersigagne(){
         }
     }
     if (caissesurcible==nbcaisse){
+
         return true;
     }
     else{
         return false;
     }
+}
+Partie::~Partie() {
+    delete plateau;
 }
