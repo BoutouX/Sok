@@ -19,10 +19,11 @@ class Partie
 {
 public:
 
-    Plateau* plateau;
-    Partie();
 
+    Partie(int niveau);
     bool testersigagne();
+    Plateau *plateau;
+    ~Partie();
 };
 
 #endif // PARTIE_H

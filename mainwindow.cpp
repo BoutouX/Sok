@@ -34,13 +34,14 @@ void MainWindow::paintEvent(QPaintEvent* e) {
     }
 
     partie->plateau->p->dessiner(&painter);
-    qDebug()<<"hey";
 
     partie->plateau->ca[0]->dessiner(&painter);
     partie->plateau->ca[1]->dessiner(&painter);
     partie->plateau->ca[2]->dessiner(&painter);
     partie->plateau->ca[3]->dessiner(&painter);
+
     if (partie->testersigagne()){
+        m->dessiner(&painter);
 
     }
 }
@@ -55,22 +56,18 @@ void MainWindow::keyPressEvent(QKeyEvent* event) {
     {
     case Qt::Key_Right:
         dep = 1;
-        qDebug() << "Right key pressed";
         partie->plateau->puisjemedeplacer((partie->plateau->p->getX()) + taille, partie->plateau->p->getY(), dep);
         break;
     case Qt::Key_Left:
         dep = 3;
-        qDebug() << "Left key pressed";
         partie->plateau->puisjemedeplacer((partie->plateau->p->getX()) - taille, partie->plateau->p->getY(), dep);
         break;
     case Qt::Key_Down:
         dep = 2;
-        qDebug() << "Down key pressed";
         partie->plateau->puisjemedeplacer(partie->plateau->p->getX(), (partie->plateau->p->getY()) + taille, dep);
         break;
     case Qt::Key_Up:
         dep = 0;
-        qDebug() << "Up key pressed";
         partie->plateau->puisjemedeplacer(partie->plateau->p->getX(), (partie->plateau->p->getY()) - taille, dep);
         break;
     }

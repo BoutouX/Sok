@@ -20,6 +20,12 @@ Plateau::Plateau(){
     tableau[2][ligne-2] = new Cible(2*(taille), (ligne-2)*(taille));
     tableau[2][ligne-2]->isclasse();
 
+    tableau[3][ligne-5] = new Cible(3*(taille), (ligne-5)*(taille));
+    tableau[3][ligne-5]->isclasse();
+
+    tableau[2][ligne-4] = new Cible(2*(taille), (ligne-4)*(taille));
+    tableau[2][ligne-4]->isclasse();
+
     for (int i = 0; i < ligne; i++) {
         tableau[0][i] = new Mur(0*(taille), i*(taille));
         tableau[0][i]->isclasse();

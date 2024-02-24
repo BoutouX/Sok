@@ -15,6 +15,7 @@ SOURCES += \
     cible.cpp \
     main.cpp \
     mainwindow.cpp \
+    message.cpp \
     mur.cpp \
     partie.cpp \
     personnage.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     casevide.h \
     cible.h \
     mainwindow.h \
+    message.h \
     mur.h \
     partie.h \
     personnage.h \
@@ -41,12 +43,12 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Benne.qrc \
-    Bravo.qrc \
     Caisse.qrc \
     Ressources/ImagesMur.qrc \
     case.qrc \
     cible.qrc \
     fond.qrc \
+    message.qrc \
     mur.qrc \
     personnage.qrc
 
