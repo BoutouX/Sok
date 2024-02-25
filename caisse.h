@@ -3,50 +3,42 @@
 
 
 #include <QPainter>
-//!  La classe Caisse, elle permet de créer une caisse du jeu de Sokoban
 
+
+/**
+ * @brief La classe Caisse représente une caisse dans un jeu.
+ * 
+ * Cette classe contient les informations et les fonctionnalités nécessaires pour manipuler une caisse.
+ */
 class Caisse
 {
 protected:
-//!  Les coordonnées de la caisse, elles sont protégées
     int x,y;
 
 public:
-    Caisse(int x=0,int y=0);//!< Constructeur de la classe Caisse, il prend en paramètre les coordonnées de la caisse, par défaut elles sont à 0
-    /*!
-    \param x int
-    \param y int
-    */
-
-   /*!
-    \brief Méthode qui permet de dessiner la caisse, elle prend en paramètre un QPainter, un QPainter est un objet qui permet de dessiner dans une fenêtre
-   */
+    /*! @brief Constructeur de la classe Caisse*/
+    Caisse(int x=0,int y=0);
+    /*! @brief Dessine la caisse sur le QPainter spécifié.
+    @param  ca Le QPainter utilisé pour le dessin*/
     void dessiner(QPainter * ca);
-    /*!
-    \param ca QPainter
-    */
+    /*! @brief Déplace la caisse à la position spécifiée.
+    @param x La nouvelle position en x de la caisse.
+    @param y La nouvelle position en y de la caisse.*/
 
-   /*! \brief Méthode permettant de déplacer la caisse, les paramètres x et y correspondent aux coordonnées */
     void deplacer(int x, int y);
-    /*!
-    \param x int
-    \param y int
-    */
-
-    /*! \brief Méthode permettant de récupérer l'attribut protégé x */
+    /*!Retourne la position en x de la caisse.*/
+    
     int getX() const;
-    /*! \brief Méthode permettant de récupérer l'attribut protégé y */
+    /*!Retourne la position en y de la caisse.*/
     int getY() const;
-    /*! \brief Méthode permettant de modifier l'attribut protégé x */
+    /*! Change la valeur de la position en x
+    @param x La nouvelle position en x de la caisse.*/
     void setX(int x);
-    /*!
-    \param x int
-    */
-    /*! \brief Méthode permettant de modifier l'attribut protégé y */
+    /*! Change la valeur de la position en y
+    @param y La nouvelle position en y de la caisse.*/
+
+
     void setY(int y);
-    /*!
-    \param y int
-    */
 
 };
 

@@ -17,55 +17,36 @@
 
 #include <iostream>
 #include <string>
-/*! classe plateau, cette classe initialise le plateau du jeu, on définit les dimensions et les caisse*/
 
 /**
  * @brief Classe représentant le plateau de jeu.
- * 
- * Cette classe définit les caractéristiques et les fonctionnalités du plateau de jeu.
- * Elle contient des informations sur la taille du plateau, les cases du plateau, les caisses et le personnage.
+ * Cette classe gère le plateau de jeu, les cases, les caisses et le personnage. Elle permet les diffférentes manipulations du plateau.
+ * On peut y trouver les méthodes permettant de dessiner le plateau, de déplacer le personnage, de vérifier si le personnage peut se déplacer, etc.
  */
-class Plateau {
+class Plateau
+{
 public:
-    /*! définit la longueur du plateau*/
+
+
     int ligne = 10;
-    /*! définit la largeur du plateau*/
     int col = 10;
-    /*! définit la taille des cases*/
     int taille = 50 ;
-    /*! tableau de pointeurs de cases, ce tableau représente le plateau de jeu, chaque case est un objet de la classe Case*/
+    int niveau;
+    Personnage *p = new Personnage(50,50);
+    Caisse *ca1[4] = {new Caisse(100,100),new Caisse(150,150),new Caisse(400,100),new Caisse(200,300)};
+    Caisse *ca2[6] = {new Caisse(100,100),new Caisse(150,150),new Caisse(400,100),new Caisse(250,300), new Caisse(300,300),new Caisse(350,300)};
     Case* tableau[10][10];
-    /*! tableau caisses, ce tableau représente les caisses du jeu, chaque caisse est un objet de la classe Caisse*/
-    int tableauCaisse[4][2];
+    int tableauCaisse1[4][2];
+    int tableauCaisse2[6][2];
+
     ~Plateau();
 public:
-    /*! 
-     * @brief Constructeur de la classe Plateau.
-     * 
-     * Ce constructeur initialise le plateau de jeu, les caisses et le personnage.
-     */
-    Plateau();
-    Personnage *p;
-    Caisse *ca[4];
+/*Constructeur de la classe plateau, il initialise le plateau avec le niveau de difficulté choisis*/
+    Plateau(int niveau);
+    int indexof(int x, int y, int tableauCaisse1[4][2], int tableauCaisse2[6][2]);
+    
+    void puisjemedeplacer(const int x, const int y,int dep);
 
-    /**
-     * @brief Recherche l'index d'une caisse dans le tableau des caisses.
-     * 
-     * @param x La coordonnée x de la caisse.
-     * @param y La coordonnée y de la caisse.
-     * @param tableauCaisse Le tableau des caisses.
-     * @return L'index de la caisse dans le tableau des caisses, -1 si la caisse n'est pas trouvée.
-     */
-    int indexof(int x, int y, int tableauCaisse[4][2]);
-
-    /**
-     * @brief Vérifie si le personnage peut se déplacer vers une position donnée.
-     * 
-     * @param x La coordonnée x de la position.
-     * @param y La coordonnée y de la position.
-     * @param dep Le déplacement du personnage.
-     */
-    void puisjemedeplacer(const int x, const int y, int dep);
 };
 
 #endif // PLATEAU_H

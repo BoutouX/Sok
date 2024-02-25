@@ -5,23 +5,30 @@
 #include<QPixmap>
 #include <QPainter>
 
-/*! Classe Casevide, elle hérite de Case. Cette classe définit une entité graphique ou le personnage peut se déplacer*/
+
+/**
+ * @brief La classe Casevide représente une case vide dans le jeu.
+ */
 class Casevide : public Case
 {
 public:
-    /*! \brief Constructeur de la classe Casevide, elle possède deux paramètres x et y initialisés a 0 par défaut */
+    /**
+     * @brief Constructeur de la classe Casevide.
+     * @param x La position en x de la case.
+     * @param y La position en y de la case.
+     */
     Casevide(int x, int y);
-    /*!
-    \param x int
-    \param y int
-    */
-    /*! \brief Méthode qui permet de renvoyer l'attribut classe des Cases, c'est un identifiant pour faciliter leur manipulation*/
+
+    /**
+     * @brief Redéfinition de la méthode isclasse de la classe Case.
+     */
     void isclasse() override;
-    /*! \brief Méthode qui permet de dessiner la case, elle prend en paramètre un QPainter, un QPainter est un objet qui permet de dessiner dans une fenêtre*/
+
+    /**
+     * @brief Dessine la case vide.
+     * @param c Le QPainter utilisé pour dessiner la case.
+     */
     void dessinercase(QPainter * c);
-    /*!
-    \param c QPainter
-    */
 };
 
 #endif // CASEVIDE_H

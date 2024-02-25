@@ -6,25 +6,31 @@
 #include<QPixmap>
 #include <QPainter>
 
-/*classe %ur, cette classe définit un objet graphique qui délimite le terrain du jeu, le personnage ne peut pas traverser cette entité, les caisses non plus*/
+
+/**
+ * @brief La classe Mur représente une case de type mur.
+ */
 class Mur : public Case
 {
 public:
-    /*! \brief Constructeur de la classe Mur, elle possède deux paramètres x et y initialisés a 0 par défaut */
+    /**
+     * @brief Constructeur de la classe Mur.
+     * @param x La position en x du mur.
+     * @param y La position en y du mur.
+     */
     Mur(int x, int y);
-    /*!
-    \param x int
-    \param y int
-    */
-    /*! \brief Méthode qui permet de renvoyer l'attribut classe des Cases, c'est un identifiant pour faciliter leur manipulation*/
-    void isclasse() override ;
-    /*! \brief Méthode qui permet de dessiner la case, elle prend en paramètre un QPainter, un QPainter est un objet qui permet de dessiner dans une fenêtre*/
-    void dessinercase(QPainter * c);
-    /*!
-    \param c QPainter
-    */
 
+    /**
+     * @brief Redéfinition de la méthode isclasse de la classe Case.
+     */
+    void isclasse() override;
 
+    /**
+     * @brief Dessine la case mur.
+     * @param c Le QPainter utilisé pour dessiner la case.
+     */
+    void dessinercase(QPainter *c);
 };
+
 
 #endif // MUR_H

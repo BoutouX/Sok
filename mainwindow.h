@@ -22,6 +22,12 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
+/**
+ * @brief La classe mainwindow.
+ * 
+ * Cette classe permet de créer et de dessiner le jeu du sokoban final.
+ */
+
 namespace Ui {
 class MainWindow;
 }

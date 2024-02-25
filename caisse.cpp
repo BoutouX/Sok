@@ -16,6 +16,7 @@ void Caisse::dessiner(QPainter * ca) {
     ca->drawPixmap(x,y,50,50,QPixmap(":/Caisse/Poubelle.png"));
 }
 
+
 void Caisse::deplacer(int x, int y)
 {
     this->x = x;
